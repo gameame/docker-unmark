@@ -1,0 +1,21 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      -  5001:80
+    depends_on:
+      - db
+    links:
+      - db
+    restart: always
+  db:
+    image: mysql:5.6
+    volumes:
+      - "/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: unmark
+      MYSQL_DATABASE: unmark
+      MYSQL_USER: unmark
+      MYSQL_PASSWORD: unmark
